@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Login</title>
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="card mx-auto" style="width:40rem;margin-top:5rem;">
+    <div class="card-header text-center bg-info text-white ">Login</div>
+    <div class="card-body">
+    <form method="POST">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required />
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required />
+        </div>
+        <small id="rssFeedHelper" class="form-text text-muted">Don't have an account? <a href="{{ url_for('register') }}">Register</a></small>
+        {% with messages = get_flashed_messages()%}
+            {% if messages %}
+                {% for msg in messages %}
+                    <div style="color:red">{{msg}}</div>
+                {% endfor%}
+            {% endif %}
+        {% endwith %}
+        <div class="text-center">
+            <button type="submit" id="submit" >Submit</button>
+        </div>
+    </form>
+    </div>
+</div>
+{% endblock content %}
